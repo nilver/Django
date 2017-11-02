@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br></br>
+    <br></br>
+    
+ <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+	                <br></br>
+    	                <div class="date">
+						    <h1>{{ doctores.nombre }}</h1>
+							<p>Especialidad: <i>{{ doctores.especialidad }}</i></p>
+							<p>Teléfono Local: <i>{{ doctores.telefono_local }}</i></p>
+							<p>Móvil: <i>{{ doctores.celular }}</i></p>
+							<p>
+							    <a href="{% url "personalList" %}">Regresar</a>
+							</p>		
+						</div>	                                
+			                
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+

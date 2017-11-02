@@ -1,0 +1,48 @@
+ {% extends "base.html" %}
+
+{% block content %}
+
+ 
+<br> </br>
+<br> </br>
+<h1 align="center">Personal </h1>
+<br> </br>
+
+<p>
+    <a href="{% url "personalNew" %}">     Agregar Nuevo Personal</a>
+</p>
+
+
+<div >
+                    <table class="table table-striped" style="margin: 0 auto;" >
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Especialidad </th>
+                                <th>Ver </th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                            <br></br>
+                            <br></br>
+                             {% for person in object_list %}
+                                <tr>
+                                    <td> {{ person.nombre  }}  </td>
+                                    <td> {{ person.especialidad  }}</td>
+                                    <td> <a href="{% url "personalDetail" person.id %}">Ver</a> </td>
+                                    <td> <a href="{% url "personalEdit" person.id %}">Editar</a> 
+                                    </td>
+                                    
+                                </tr>
+                            
+                             {% endfor %}
+                        </tbody>
+                    </table>
+  </div>
+ 
+
+{% endblock %}
+
+
+
+

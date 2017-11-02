@@ -1,0 +1,83 @@
+ {% extends "base.html" %}
+
+{% block content %}
+
+ 
+<br> </br>
+<br> </br>
+<h1 align="center">Consultas </h1>
+<br> </br>
+
+
+      <div  align="center">
+                    <h3><a href="{% url "new" %}"> Registrar Nueva Consulta</a></h3>
+                         <br></br>
+                     <form action ="{% url "pacienteBuscar" %}" method="GET">
+                        <label for="q">Nombre | N° Historia  </label>
+                        <input type="text" name="q" value="{{ query|escape }}">
+                        <input type="submit" value="Buscar">
+                     </form>
+
+              </div>
+      <div >
+                    <table class="table table-striped" style="margin: 10 auto;" >
+                  <thead>
+                      <tr>
+                          <th>Paciente</th>
+                          <th>Personal Médico </th>
+                          <th>Fecha</th>
+                          <th>Status</th>
+                          <th>Editar Consulta</th>
+                      </tr>
+                  </thead>
+                      <br></br>
+                      <br></br>
+
+                        {% if query %}
+                           <h2>Resultados para "{{ query|escape }}":</h2>
+                   
+                           {% if results %}
+
+                         <ul>
+                             
+                         {% for consultas in results%}
+                               
+                           <tr>
+                             <td> {{ consultas.paciente.nombre  }}  </td>
+                             <td> {{ consultas.doctor.nombre  }}</td>
+                             <td> {{ consultas.fecha  }}</td>
+                             <td> {{ consultas.status  }}</td>
+                             <td> <a href="{% url "editConsultad2" consultas.id %}">Editar Status</a> 
+                          
+                           </tr>
+                  
+                          {% endfor %}
+                        </ul>
+                      {% else %}
+                        <p>No se encontraron pacientes .</p>
+                      {% endif %}
+                    {% endif %}   
+
+
+
+                       {% for consultas in object_list %}
+                          <tr>
+                              <td> {{ consultas.paciente.nombre  }}  </td>
+                              <td> {{ consultas.doctor.nombre  }}</td>
+                              <td> {{ consultas.fecha  }}</td>
+                              <td> {{ consultas.status  }}</td>
+                              <td> <a href="{% url "editStatus" consultas.id %}">Editar Status</a> 
+                              
+                          </tr>
+                      
+                       {% endfor %}
+                  </tbody>
+              </table>
+  </div>
+ 
+
+{% endblock %}
+
+
+
+
