@@ -32,7 +32,7 @@ table, th, td {
 
 }
 </style>
-	<form action="{% url 'list' %}" method="post">
+	<form action="{% url 'consultaNueva' paciente.id %}" method="post">
 		{% csrf_token %}
 		<h2>{{ paciente.nombre }}</h2>
 		<br><br>
@@ -40,7 +40,7 @@ table, th, td {
 		  <tr>
 		    <td>Personal Médico :</td>
 		    <td></td>
-		    <td><select>
+		    <td><select name="doctor">
 		           {% for doctor in doctores %}
 					    <option value="{{ doctor.id }}">{{ doctor.nombre }}</option>
 					{% endfor %}
@@ -50,13 +50,13 @@ table, th, td {
 		  <tr>
 		    <td><p>Fecha Consulta :</p></td>
 		    <td></td>
-		    <td><input type="text" id="datepicker" /></td>
+		    <td><input type="text" id="datepicker" name="fecha" /></td>
 		  </tr>
 		  <tr>
 		    <td>Hora Consulta:</td>
 		    <td></td>
 		    <td>
-            <select name="hora">
+            <select name="hora" name="hora">
                <option value="1">8:00 am</option> 
                <option value="2">8:30 am</option> 
                <option value="1">9:00 am</option> 

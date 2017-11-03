@@ -26,6 +26,7 @@ class Doctores(models.Model):
 
 class Consultas(models.Model):
     fecha = models.DateField('Fecha')
+    hora = models.CharField('Hora',max_length=5,blank=True, null=True)
     paciente = models.ForeignKey(Pacientes, on_delete=models.CASCADE,related_name='paciente')
     doctor = models.ForeignKey( Doctores, on_delete=models.CASCADE,related_name='doctor')
     status = models.CharField('Status',max_length=15)

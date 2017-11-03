@@ -20,7 +20,8 @@ urlpatterns = [
  
     url(r'^consultas$', views.ConsultasList.as_view(), name='consultasList'),
     url(r'^consultas/editarStatus/(?P<consulta_id>\d+)$', views.EditStatus, name='editStatus'),
-  
+    url(r'^consultas/buscar$', views.ConsultaBuscar, name='consultaBuscar'),
+    
     
 ]    
 

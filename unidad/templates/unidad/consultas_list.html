@@ -10,9 +10,8 @@
 
 
       <div  align="center">
-                    <h3><a href="{% url "new" %}"> Registrar Nueva Consulta</a></h3>
-                         <br></br>
-                     <form action ="{% url "pacienteBuscar" %}" method="GET">
+                     <br></br>
+                     <form action ="{% url "consultaBuscar" %}" method="GET">
                         <label for="q">Nombre | N° Historia  </label>
                         <input type="text" name="q" value="{{ query|escape }}">
                         <input type="submit" value="Buscar">
@@ -24,8 +23,10 @@
                   <thead>
                       <tr>
                           <th>Paciente</th>
+                          <th>N° Historia </th>
                           <th>Personal Médico </th>
                           <th>Fecha</th>
+                          <th>Hora</th>
                           <th>Status</th>
                           <th>Editar Consulta</th>
                       </tr>
@@ -44,8 +45,10 @@
                                
                            <tr>
                              <td> {{ consultas.paciente.nombre  }}  </td>
+                             <td> {{ consultas.paciente.historia  }}  </td>
                              <td> {{ consultas.doctor.nombre  }}</td>
                              <td> {{ consultas.fecha  }}</td>
+                             <td> {{ consultas.hora  }}</td>
                              <td> {{ consultas.status  }}</td>
                              <td> <a href="{% url "editConsultad2" consultas.id %}">Editar Status</a> 
                           
@@ -63,8 +66,10 @@
                        {% for consultas in object_list %}
                           <tr>
                               <td> {{ consultas.paciente.nombre  }}  </td>
+                              <td> {{ consultas.paciente.historia  }}  </td>
                               <td> {{ consultas.doctor.nombre  }}</td>
                               <td> {{ consultas.fecha  }}</td>
+                              <td> {{ consultas.hora  }}</td>
                               <td> {{ consultas.status  }}</td>
                               <td> <a href="{% url "editStatus" consultas.id %}">Editar Status</a> 
                               
