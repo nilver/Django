@@ -27,10 +27,10 @@ def ConsultaBuscar(request):
     query = request.GET.get('q', '')
     if query:
         qset = (
-            Q(nombre__icontains=query) |
-            Q(historia__icontains=query) 
+            Q(paciente__nombre__icontains=query) |
+            Q(paciente__historia__icontains=query) 
         )
-        results = Pacientes.objects.filter(qset)
+        results = Consultas.objects.filter(qset)
         #print(results)
     else:
         results = []
@@ -62,15 +62,15 @@ def EditStatus(request,consulta_id):
 def ConsultaNueva(request,paciente_id):
 
     if request.method== "POST":
+        
+        doctor=request.POST.get('doctor')
         p1 = Pacientes.objects.get(id=paciente_id)
-        d1 = Doctores.objects.get(id='1')
+        d1 = Doctores.objects.get(id=doctor)
         fecha=request.POST.get('fecha')
         hora=request.POST.get('hora')
-        print("S")
         date = datetime.strptime(fecha, "%d/%m/%Y")
         datetime.strftime(date, "%Y-%m-%d")
-        print(date)
-
+       
         doctor=paciente_id
         Consultas.objects.create(paciente=p1,doctor=d1,fecha=date,hora=hora)
         return render(request, 'base.html')
