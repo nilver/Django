@@ -125,12 +125,12 @@ class PacientesDetail(DetailView):
 class PacientesCreation(CreateView):
     model = Pacientes
     success_url = reverse_lazy('list')
-    fields = ['nombre', 'historia', 'genero','fecha','direccion','cedula','representante','telefono_local','celular']
+    fields = ['nombre', 'historia', 'genero','fecha','direccion','cedula','representante','telefono_local','celular','diagnostico','edad']
 
 class PacientesUpdate(UpdateView):
     model = Pacientes
     success_url = reverse_lazy('list')
-    fields = ['nombre', 'historia', 'genero','fecha','direccion','cedula','representante','telefono_local','celular']
+    fields = ['nombre', 'historia', 'genero','fecha','direccion','cedula','representante','telefono_local','celular','diagnostico','edad']
 
 # Personal
 
