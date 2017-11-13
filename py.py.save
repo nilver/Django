@@ -1,0 +1,9 @@
+import csv, operator
+
+print("Comienzo")
+with open('no_
+a.csv') as csvarchivo:
+    entrada = csv.reader(csvarchivo)
+    for reg in entrada:
+        print(reg)  # Cada línea se muestra como una lista de campos
+print("Final")
